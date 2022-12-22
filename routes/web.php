@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Livewire\AdminAddCouponComponent;
+use App\Http\Livewire\AdminCouponsComponent;
+use App\Http\Livewire\AdminEditCouponComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,5 +31,15 @@ Route::middleware([
     //         return view('dashboard');
     //     })->name('dashboard');
 
+    // dashboard
     Route::resource('dashboard', DashboardController::class);
+
+    // show all coupons
+    Route::get('/coupons', AdminCouponsComponent::class)->name('coupons');
+
+    // create coupons
+    Route::get('/coupon/add', AdminAddCouponComponent::class)->name('addcoupon');
+
+    // edit coupons
+    Route::get('coupon/edit/{coupon_id}', AdminEditCouponComponent::class)->name('editcoupon');
 });
